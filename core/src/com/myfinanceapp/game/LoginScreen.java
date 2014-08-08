@@ -31,39 +31,7 @@ public class LoginScreen implements Screen {
 		
 		stage = new Stage();
 		Gdx.input.setInputProcessor(stage);
-
-//		skin = new Skin();
 		skin = new Skin(Gdx.files.internal("uiskin.json"));
-		skin.add("default", new BitmapFont());
-
-		Pixmap pixmap = new Pixmap(1, 1, Format.RGBA8888);
-		pixmap.setColor(Color.WHITE);
-		pixmap.fill();
-		skin.add("white", new Texture(pixmap));
-		
-		// Make label
-		LabelStyle labelStyle = new LabelStyle();
-		labelStyle.font = skin.getFont("default");
-		skin.add("default", labelStyle);
-		
-		// Make cursor
-//		skin.add("cursor", new Texture("cursor.png"));
-
-		// Make text field
-		TextFieldStyle textFieldStyle = new TextFieldStyle();
-		textFieldStyle.font = skin.getFont("default");
-		textFieldStyle.fontColor = Color.RED;
-		textFieldStyle.background = skin.newDrawable("white", Color.LIGHT_GRAY);
-		textFieldStyle.cursor = skin.newDrawable("cursor", Color.GREEN);
-		skin.add("default", textFieldStyle);
-		
-		// Make text button
-		TextButtonStyle textButtonStyle = new TextButtonStyle();
-		textButtonStyle.font = skin.getFont("default");
-		textButtonStyle.up = skin.newDrawable("white", Color.RED);
-		textButtonStyle.down = skin.newDrawable("white", Color.BLUE);
-		textButtonStyle.over = skin.newDrawable("white", Color.LIGHT_GRAY);
-		skin.add("default", textButtonStyle);
 		
 		Label nameLabel = new Label("Name:", skin);
 		TextField nameText = new TextField("", skin);
