@@ -1,7 +1,11 @@
 package com.myfinanceapp.game;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileReader;
 import java.io.FileWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
@@ -28,11 +32,12 @@ public class LoginScreen implements Screen {
 		stage = new Stage();
 		Gdx.input.setInputProcessor(stage);
 		skin = new Skin(Gdx.files.internal("uiskin.json"));
+		List<String> textFieldValues = readRecord();
 		
 		Label nameLabel = new Label("Name:", skin);
-		final TextField nameText = new TextField("", skin);
+		final TextField nameText = new TextField(textFieldValues.get(0), skin);
 		Label ageLabel = new Label("Age:", skin);
-		final TextField ageText = new TextField("", skin);
+		final TextField ageText = new TextField(textFieldValues.get(1), skin);
 		final TextButton textButton = new TextButton("Click Me!", skin);
 		
 		Table table = new Table();
@@ -108,6 +113,28 @@ public class LoginScreen implements Screen {
 			e.printStackTrace();
 			System.out.println("error" + e.getMessage());
 		}
+	}
+	
+	public List<String> readRecord() {
+		List<String> returnList = new ArrayList<String>();
+		
+		try {
+			FileReader fr = new FileReader("data.txt");
+			BufferedReader br = new BufferedReader(fr);
+			
+			String line;
+			while ((line = br.readLine()) != null) {
+				String[] arr = line.split(":");
+				returnList.add(arr[1]);
+			}
+				
+			br.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("error" + e.getMessage());
+		}
+		
+		return returnList;
 	}
 
 }
