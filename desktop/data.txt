@@ -1,2 +1,2 @@
-name:wade
-age:2
+name:
+age:100

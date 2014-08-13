@@ -7,6 +7,8 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -56,8 +58,9 @@ public class LoginScreen implements Screen {
 		textButton.addListener(new ChangeListener() {
 			public void changed (ChangeEvent event, Actor actor) {
 				writeRecord(nameText.getText(), ageText.getText());
-				System.out.println("Clicked! Is checked: " + textButton.isChecked());
-				textButton.setText("Good job!");
+//				System.out.println("Clicked! Is checked: " + textButton.isChecked());
+//				textButton.setText("Good job!");
+//				infoBox("Record saved!", "SAVE RECORD");
 			}
 		});
 	}
@@ -136,5 +139,9 @@ public class LoginScreen implements Screen {
 		
 		return returnList;
 	}
+	
+//	public static void infoBox(String infoMessage, String location) {
+//		JOptionPane.showMessageDialog(null, infoMessage, "InfoBox: " + location, JOptionPane.INFORMATION_MESSAGE);
+//	}
 
 }
